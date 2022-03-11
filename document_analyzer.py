@@ -11,17 +11,21 @@ for i in words:
     else:
         frequency_dict.update({i: 1})
 
-sorted_dict = dict(sorted(frequency_dict.items(), key=lambda _: _[1])[::-1])
+sorted_dict = dict(sorted(frequency_dict.items(), key=lambda _: _[1])[::-1])  # Sort by keys and then reverse
+
+sorted_list = list(frequency_dict.items())
+for i in range(len(sorted_list)):
+    for j in range(len(sorted_list) - i - 1):
+        if sorted_list[j][1] < sorted_list[j+1][1]:
+            a = sorted_list[j]
+            sorted_list[j] = sorted_list[j + 1]
+            sorted_list[j + 1] = a
+        if sorted_list[j][1] == sorted_list[j + 1][1]:
+            if sorted_list[j][0] > sorted_list[j + 1][0]:
+                a = sorted_list[j]
+                sorted_list[j] = sorted_list[j + 1]
+                sorted_list[j + 1] = a
+
 print()
-
-arr = list(sorted_dict.items())
-for i in range(len(arr)):
-    for j in range(len(arr) - i - 1):
-        # print(arr[j][0])
-        if frequency_dict.get(arr[j][0]) == frequency_dict.get(arr[j + 1][0]):
-            a = arr[j]
-            arr[j] = arr[j + 1]
-            arr[j + 1] = a
-
 for i in range(0, 5):
-    print(f"{arr[i][0]}: {arr[i][1]}")
+    print(f"{sorted_list[i][0]}: {sorted_list[i][1]}")
