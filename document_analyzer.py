@@ -11,7 +11,7 @@ for i in words:
     else:
         frequency_dict.update({i: 1})
 
-sorted_dict = dict(sorted(frequency_dict.items(), key=lambda _:_[1])[::-1])
-
+sorted_dict = dict(sorted(frequency_dict.items(), key=lambda _ : _[1])[::-1])
+print()
 for i in list(sorted_dict.items())[:5]:
     print(f"{i[0]}: {sorted_dict.get(i[0])}")
